@@ -10,14 +10,14 @@
   <h1>Educagrinho</h1>
 
   <p>
-  O Educagrinho é um simulador educativo criado para o Agrinho, com o objetivo de ajudar pequenos produtores a entenderem como suas escolhas no campo afetam a produtividade, o uso da água, a saúde do solo e o meio ambiente.
-</p>
+    O Educagrinho é um simulador educativo criado para o Agrinho, com o objetivo de ajudar pequenos produtores a entenderem como suas escolhas no campo afetam a produtividade, o uso da água, a saúde do solo e o meio ambiente.
+  </p>
 
   <h2>Preencha nossa simulação com seus dados</h2>
 
-  <form>
+  <form id="formSimulacao">
     <label for="clima">Clima atual:</label><br>
-    <select id="clima" name="clima">
+    <select id="clima" name="clima" required>
       <option value="">Selecione uma opção</option>
       <option value="seco">Seco</option>
       <option value="normal">Normal</option>
@@ -26,7 +26,7 @@
     <br><br>
 
     <label for="solo">Tipo de solo:</label><br>
-    <select id="solo" name="solo">
+    <select id="solo" name="solo" required>
       <option value="">Selecione uma opção</option>
       <option value="arenoso">Arenoso</option>
       <option value="argiloso">Argiloso</option>
@@ -36,15 +36,56 @@
     <br><br>
 
     <label for="producao">O que você produz?</label><br>
-    <input type="text" id="producao" name="producao" placeholder="Ex: milho, soja, feijão, hortaliças">
+    <input type="text" id="producao" name="producao" placeholder="Ex: milho, soja, feijão, hortaliças" required>
     <br><br>
 
     <label for="dificuldade">Qual sua maior dificuldade?</label><br>
-    <textarea id="dificuldade" name="dificuldade" placeholder="Ex: falta de água, finanças, pragas, solo fraco..."></textarea>
+    <textarea id="dificuldade" name="dificuldade" placeholder="Ex: falta de água, finanças, pragas, solo fraco..." required></textarea>
     <br><br>
 
     <button type="submit">Enviar</button>
   </form>
+
+  <h2>Resultado da simulação</h2>
+  <p id="resultado">Preencha os dados acima para receber uma recomendação.</p>
+
+  <script>
+    const form = document.getElementById("formSimulacao");
+    const resultado = document.getElementById("resultado");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const clima = document.getElementById("clima").value;
+      const solo = document.getElementById("solo").value;
+      const producao = document.getElementById("producao").value;
+      const dificuldade = document.getElementById("dificuldade").value;
+
+      let mensagem = "";
+
+      if (clima === "seco") {
+        mensagem += "Como o clima está seco, é importante economizar água e usar irrigação de forma controlada. ";
+      } else if (clima === "normal") {
+        mensagem += "Com o clima normal, é um bom momento para manter o equilíbrio entre produção e cuidado com o solo. ";
+      } else if (clima === "chuvoso") {
+        mensagem += "Como o clima está chuvoso, é importante evitar o excesso de água e observar possíveis erosões no solo. ";
+      }
+
+      if (solo === "arenoso") {
+        mensagem += "O solo arenoso perde água com mais facilidade, então o uso de cobertura vegetal pode ajudar bastante. ";
+      } else if (solo === "argiloso") {
+        mensagem += "O solo argiloso segura mais água, mas precisa de cuidado para não ficar compactado. ";
+      } else if (solo === "organico") {
+        mensagem += "O solo rico em matéria orgânica é positivo para a produtividade e para o meio ambiente. ";
+      } else if (solo === "nao-sei") {
+        mensagem += "Seria interessante fazer uma análise simples do solo para tomar decisões melhores. ";
+      }
+
+      mensagem += "Para a produção de " + producao + ", procure soluções sustentáveis que reduzam desperdícios e melhorem os resultados financeiros.";
+
+      resultado.textContent = mensagem;
+    });
+  </script>
 
 </body>
 </html>
