@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-html lang = "pt-BR"
- <head>
-meta charset = <UTF-8>
-<title>Educagrinho</title>
-meta name ="viewport" content="width=devide-width"
-</UTF-8>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educagrinho</title>
+</head>
+<body>
 
- </head>
- <body>
-    <h1>Educagrinho é um site para o projeto agrinho para mostrar aos pequenos produtures a como melhorar a produtividade sem prejudicar o meio-ambiente e as financas</h1>
- </body>
+  <h1>Educagrinho</h1>
+
+  <p>
+  O Educagrinho é um simulador educativo criado para o Agrinho, com o objetivo de ajudar pequenos produtores a entenderem como suas escolhas no campo afetam a produtividade, o uso da água, a saúde do solo e o meio ambiente.
+</p>
+
+  <h2>Preencha nossa simulação com seus dados</h2>
+
+  <form>
+    <label for="clima">Clima atual:</label><br>
+    <select id="clima" name="clima">
+      <option value="">Selecione uma opção</option>
+      <option value="seco">Seco</option>
+      <option value="normal">Normal</option>
+      <option value="chuvoso">Chuvoso</option>
+    </select>
+    <br><br>
+
+    <label for="solo">Tipo de solo:</label><br>
+    <select id="solo" name="solo">
+      <option value="">Selecione uma opção</option>
+      <option value="arenoso">Arenoso</option>
+      <option value="argiloso">Argiloso</option>
+      <option value="organico">Rico em matéria orgânica</option>
+      <option value="nao-sei">Não sei informar</option>
+    </select>
+    <br><br>
+
+    <label for="producao">O que você produz?</label><br>
+    <input type="text" id="producao" name="producao" placeholder="Ex: milho, soja, feijão, hortaliças">
+    <br><br>
+
+    <label for="dificuldade">Qual sua maior dificuldade?</label><br>
+    <textarea id="dificuldade" name="dificuldade" placeholder="Ex: falta de água, finanças, pragas, solo fraco..."></textarea>
+    <br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+</body>
+</html>
